@@ -1,183 +1,100 @@
-# **프로비저닝 소개**
+# jekyll-rtd-theme
 
-## **프로비저닝 방법**
+![CI](https://github.com/rundocs/jekyll-rtd-theme/workflows/CI/badge.svg?branch=develop)
+![jsDelivr](https://data.jsdelivr.com/v1/package/gh/rundocs/jekyll-rtd-theme/badge)
 
-호스트를 프로비저닝하는 방법에는 이미지 기반, 네트워크 기반, 부팅 디스크 기반 및 검색 기반의 여러 가지가 있습니다. 최적의 호스트 프로비저닝 방법은 호스트 유형, DHCP의 가용성에 따라 다릅니다. 기존 VM 템플릿에서 복제할지 여부.
+Just another documentation theme compatible with GitHub Pages
 
-|  | ABP를 사용하여 호스트를 프로비저닝하는 방법에 대한 자세한 내용은 용어 및 주요 용어https://docs.ABP.com/or/6.0/sources/glossary.html 참조하십시오. 주요 용어에는 https://docs.ABP.com/or/6.0/sources/glossary.html#Deployment, https://docs.ABP.com/or/6.0/sources/glossary.html#Compute_Resource, https://docs.ABP.com/or/6.0/sources/glossary.html#Provisioning_Template 및 [https://docs.ABP.com/or/6.0/sources/glossary.html#Virtualization가](https://docs.ABP.com/or/6.0/sources/glossary.html#Virtualization%EA%B0%80) 포함됩니다. |
-| --- | --- |
+## What it does?
 
-그 결과 다음과 같은 의사 결정 트리가 생성됩니다.
+This theme is inspired by [sphinx-rtd-theme](https://github.com/readthedocs/sphinx_rtd_theme) and refactored with:
 
-!https://docs.ABP.com/or/6.0/_images/images/provisioning_guide_decision_tree.svg
+- [@primer/css](https://github.com/primer/css)
+- [github-pages](https://github.com/github/pages-gem) ([dependency versions](https://pages.github.com/versions/))
 
-시작점은 프로비저닝할 호스트 유형에 대한 질문입니다.
+## Quick start
 
-***클라우드 인스턴스***
+```yml
+remote_theme: rundocs/jekyll-rtd-theme
+```
 
-- Image Based Host Deployment(이미지 기반 호스트 배포)를 선택합니다.
+You can [generate](https://github.com/rundocs/starter-slim/generate) with the same files and folders from [rundocs/starter-slim](https://github.com/rundocs/starter-slim/)
 
-***가상 머신***
+## Usage
 
-- 템플릿/*골든 이미지*에서 VM을 복제하려면 이미지 기반 설치를 선택합니다.
-- 네트워크 구성에 따라 다음 중 하나를 수행합니다
-    - 호스트에 고정 IP 주소가 있는 경우 부팅 디스크 기반 설치를 선택합니다.
-    - 또는 호스트의 네트워크가 DHCP를 제공하는 경우 네트워크 기반 설치를 선택합니다.
+Documentation that can guide how to create with Github pages, please refer to [rundocs.io](https://rundocs.io) for details
 
-***베어메탈 호스트***
+## Features
 
-- Discovery Based Installation(검색 기반 설치)을 선택합니다.
-- 또는 네트워크 구성에 따라 네트워크 기반 설치를 선택하십시오.
-    - 고정 IP 주소가 있는 호스트에 대해 부팅 디스크 기반 설치를 선택합니다.
-    - 또는 호스트의 네트워크가 DHCP를 제공하는 경우 네트워크 기반 설치를 선택합니다.
+- Shortcodes (Toasts card, mermaid)
+- Pages Plugins (emoji, gist, avatar, mentions)
+- Auto generate sidebar
+- [Attribute List Definitions](https://kramdown.gettalong.org/syntax.html#attribute-list-definitions) (Primer/css utilities, Font Awesome 4)
+- Service worker (caches)
+- SEO (404, robots.txt, sitemap.xml)
+- Canonical Link (Open Graph, Twitter Card, Schema data)
 
-다음 그래픽은 각 프로비저닝 방법의 단계를 표시합니다.
+## Options
 
-!https://docs.ABP.com/or/6.0/_images/images/provisioning_guide_methods.svg
+| name          | default value        | description       |
+| ------------- | -------------------- | ----------------- |
+| `title`       | repo name            |                   |
+| `description` | repo description     |                   |
+| `url`         | user domain or cname |                   |
+| `baseurl`     | repo name            |                   |
+| `lang`        | `en`                 |                   |
+| `direction`   | `auto`               | `ltr` or `rtl`    |
+| `highlighter` | `rouge`              | Cannot be changed |
 
-***네트워크 기반 프로비저닝***
+```yml
+# folders sort
+readme_index:
+  with_frontmatter: true
 
-1. 가상 머신인지 베어 메탈 호스트인지에 따라 ABP 중 하나
-    - 계산 리소스 공급자에게 가상 머신을 만들도록 지시합니다.
-    - 또는 베어 메탈 호스트는 수동으로, 즉 손으로 또는 정전 관리 도구를 통해 시작해야 합니다. 베어 메탈 호스트의 경우 새 호스트의 MAC 주소를 ABP에 제출해야 합니다.
-2. 호스트는 네트워크를 통해 부팅하고 DHCP 서버를 자동으로 검색하며, DHCP 서버는 IP 주소를 할당하고 네트워크를 구성합니다. DHCP 서버는 프로비저닝 템플릿의 한 유형인 PXE/iPXE 파일을 제공합니다.
-    
-    
-    |  | ABP가 DHCP 서버를 구성 및 관리하거나 ABP 또는 ABP 프록시에 대한 업무를 인수하는 것이 좋습니다. |
-    | --- | --- |
-3. 새 호스트는 TFTP를 통해 ABP 또는 ABP 프록시에서 AutoYaST/Kickstart/Preseed 파일을 가져오고 운영 체제의 자동 설치 및 초기 구성을 시작합니다.
-4. 새 호스트는 설치를 마친 후 ABP에 다시보고하고 ABP의 상태가 설치됨으로 전환됩니다.
+meta:
+  key1: value1
+  key2: value2
+  .
+  .
+  .
 
-***부팅 디스크 기반 프로비저닝***
+google:
+  gtag:
+  adsense:
 
-1. 이미지에는 새 호스트의 네트워크 컨피그레이션이 포함되어 있으며, 네트워크 기반 프로비저닝과 달리 DHCP를 통한 네트워크 컨피그레이션을 대체합니다. 부팅 디스크 이미지에는 네 가지 종류가 있습니다.`boot_disk.iso`
-    - *호스트별* 이미지는 기본 이미지이며 DHCP가 필요하지 않습니다. 네트워크 구성만 포함하고 iPXE 템플릿에 대한 ABP를 가리킨 다음 프로비저닝 템플릿(AutoYaST, Kickstart 또는 Preseed 프로비저닝 템플릿)을 가리킵니다.
-    - *전체 호스트* 이미지에는 네트워크 구성, 커널, iPXE 파일 및 프로비저닝 템플릿이 포함되어 있습니다. 이미지는 운영 체제에 따라 다릅니다.
-    - *일반* 이미지는 ABP에 등록된 모든 호스트에서 작동하고 DHCP가 필요한 재사용 가능한 이미지입니다.
-    - *서브넷 일반* 이미지에는 DHCP가 필요하며 호스트의 서브넷에 할당된 ABP 프록시에서 설치 미디어를 체인로드합니다.
-2. 베어메탈 호스트 또는 가상 머신 모두 연결해야 합니다.`boot_disk.iso`
-    - VMware vSphere에서 실행되는 가상 머신은 자동으로 이미지를 수신하여 새 호스트에 연결합니다. 다른 [[계산 리소스 공급자](https://docs.ABP.com/or/6.0/sources/compute_resources.html)](https://docs.ABP.com/or/6.0/sources/compute_resources.html)의 경우 이미지를 직접 연결해야 합니다.
-    - 베어 메탈 호스트는 항상 이미지를 수동으로 수신해야 합니다. ABP에서 제공하는 이미지가 아닌 다른 이미지에서 부팅하려는 경우에도 동일하게 적용됩니다. 베어 메탈 호스트의 경우 새 호스트의 MAC 주소를 ABP에 제출해야 합니다.`boot_disk.iso`
-3. 새 호스트는 설치를 마친 후 ABP에 다시보고하고 ABP의 상태가 설치됨으로 전환됩니다.
+mathjax: # this will prased to json, default: {}
 
-**이미지 기반 프로비저닝(PXE 없는 프로비저닝)**
+mermaid:
+  custom:     # mermaid link
+  initialize: # this will prased to json, default: {}
 
-이미지를 구성하려는 방법에 따라 다음 중 하나를 수행할 수 있습니다
+scss:   # also _includes/extra/styles.scss
+script: # also _includes/extra/script.js
 
-- SSH를 통해서만 프로비저닝 템플릿을 사용하며, 이 경우 DHCP를 통해 네트워크 구성을 제공해야 합니다.`finish`
-- 또는 프로비저닝 템플릿이 있는 cloud-init 를 통해 이미지가 ABP 또는 ABP 프록시를 가리켜야 하며 . 정확한 구성은 [[계산 리소스 공급자](https://docs.ABP.com/or/6.0/sources/compute_resources.html)](https://docs.ABP.com/or/6.0/sources/compute_resources.html)에 따라 달라집니다.`userdatacloud-init`
+translate:
+  # shortcodes
+  danger:
+  note:
+  tip:
+  warning:
+  # 404
+  not_found:
+  # copyright
+  revision:
+  # search
+  searching:
+  search:
+  search_docs:
+  search_results:
+  search_results_found: # the "#" in this translate will replaced with results size!
+  search_results_not_found:
 
-|  | 현재 DHCP 서버에 액세스할 수 있는 호스트에 대해서만 이미지 기반 프로비저닝을 사용하는 것이 좋습니다. |
-| --- | --- |
+plugins:
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
+```
 
-1. ABP는 계산 리소스 공급자에게 기존 VM 템플릿을 기반으로 가상 머신을 생성하도록 지시합니다(즉, *골든 이미지를* 복제).
-2. DHCP 서버를 사용할 수 있는지 여부에 따라
-    ◦ 새 가상 머신은 DHCP 서버에서 IP 주소와 네트워크 구성을 수신합니다.
-    ◦ 또는 cloud-init 프로비저닝 템플릿을 사용하여 네트워크 구성을 설정합니다. DHCP와 함께 또는 DHCP없이 사용할 수 있습니다.
-또는 ABP는 SSH를 통한 프로비저닝 템플릿을 기반으로 프로비저닝 프로세스를 완료합니다.
-3. 계산 리소스가 클라우드 공급자이고 이미지가 를 수행할 수 있는 경우 SSH를 통해 ABP 또는 ABP 프록시에서 새 호스트에 연결할 필요가 없지만 준비가 되면 ABP 또는 ABP 프록시에 알릴 수 있습니다.`user_data`
+## The license
 
-| 운영 체제 | 프로비저닝 템플릿 |
-| --- | --- |
-| CentOS, Oracle Linux 및 Red Hat Enterprise Linux | 킥스타트 템플릿 |
-| SUSE Linux 엔터프라이즈 서버 | AutoYaST 템플릿 |
-| 데비안과 우분투 | 미리 설정 템플릿 |
-
-**검색 기반 프로비저닝**
-
-검색 기반 프로비저닝은 부팅 디스크 기반 프로비저닝과 유사합니다. 이미지를 사용하여 호스트를 최소 Linux 시스템으로 부팅하고, ABP에 보고하고, MAC 주소를 포함한 다양한 사실을 전송하여 호스트를 식별합니다. 그러면 호스트가 검색된 호스트 페이지에 나열됩니다.`discovery.iso`
-
-|  | 검색 기반 프로비저닝을 사용하려면 호스트 검색 플러그인이 ABP에 설치되어 있어야 합니다. 자세한 내용은 https://docs.ABP.com/or/6.0/sources/guides/rocky_linux/provisioning_hosts/discovery.html 참조하십시오. |
-| --- | --- |
-
-1. DHCP 서버를 사용할 수 있는지 여부에 따라
-    ◦ 호스트는 네트워크 구성 및 검색 이미지를 수동으로 수신하고 대화형 방식으로 이미지를 부팅합니다.`discovery.iso`
-    ◦ 또는 호스트가 DHCP 서버에서 네트워크 구성 및 검색 이미지를 자동으로 가져와서 비대화형 방식으로 이미지를 부팅합니다.`discovery.iso`
-2. 이미지에는 호스트가 보고해야 하는 ABP 또는 ABP 프록시가 포함되어 있으며 호스트에 대한 사실을 수집하여 ABP 또는 ABP 프록시로 보냅니다.`discovery.iso`
-    ◦ 기존 검색 규칙이 있는 경우 호스트는 검색 규칙 및 호스트 그룹을 기반으로 네트워크 기반 프로비저닝 프로세스를 자동으로 시작합니다.
-    ◦ 그렇지 않으면 호스트가 검색된 호스트 목록에 나타납니다. 다음 프로세스는 hew 호스트를 만드는 것과 매우 유사합니다.
-운영 체제 설치를 시작하는 방법에는 두 가지가 있습니다.
-        ▪ 호스트가 재부팅된 다음 DHCP 서버에서 네트워크 기반 프로비저닝 템플릿을 가져옵니다.
-        ▪ 또는 호스트가 재부팅되지 않았지만 현재 네트워크 구성을 통해 설치가 시작됩니다.`kexec`
-
-|  | Ansible 플레이북을 기반으로 호스트를 프로비저닝하려면 https://docs.ABP.com/or/6.0/sources/guides/application_centric_deployment.html 가이드를 참조하십시오. ACD는 Ansible 플레이북 및 애플리케이션 정의를 사용하여 멀티 호스트 애플리케이션을 배포하고 구성하는 데 도움이 됩니다. |
-| --- | --- |
-
-## **프로비저닝 개요**
-
-프로비저닝은 베어 물리적 또는 가상 머신으로 시작하여 완전히 구성되고 즉시 사용할 수 있는 운영 체제로 끝나는 프로세스입니다. ABP를 사용하면 많은 수의 호스트에 대한 세분화된 프로비저닝을 정의하고 자동화할 수 있습니다.
-
-많은 프로비저닝 방법이 있습니다. 예를 들어, ABP 서버의 통합 ABP 프록시 또는 외부 ABP 프록시를 사용하여 PXE 기반 및 비PXE 기반 방법을 모두 사용하여 베어 메탈 호스트를 프로비저닝할 수 있습니다. API를 통해 특정 공급자의 클라우드 인스턴스를 프로비저닝할 수도 있습니다. 이러한 프로비저닝 방법은 호스트를 생성, 관리 및 업데이트하기 위한 ABP 애플리케이션 수명 주기의 일부입니다.
-
-ABP에는 호스트를 프로비저닝하는 다양한 방법이 있습니다.
-
-***베어 메탈 프로비저닝***ABP는 주로 PXE 부팅 및 MAC 주소 식별을 통해 베어 메탈 호스트를 프로비저닝합니다. 호스트 항목을 생성하고 프로비저닝할 물리적 호스트의 MAC 주소를 지정할 수 있습니다. 또한 빈 호스트를 부팅하여 ABP의 검색 서비스를 사용할 수 있으며, 이 서비스는 프로비저닝 준비가 완료된 호스트 풀을 생성합니다. PXE가 없는 방법을 통해 호스트를 부팅하고 프로비저닝할 수도 있습니다.***클라우드 제공업체***ABP는 프라이빗 및 퍼블릭 클라우드 제공자에 연결하여 클라우드 환경과 함께 저장된 이미지에서 호스트 인스턴스를 프로비저닝합니다. 여기에는 사용할 하드웨어 프로필 또는 버전 선택도 포함됩니다.***가상화 인프라스트럭처***ABP는 oVirt 및 VMware와 같은 가상화 인프라 서비스에 연결하여 가상 이미지 템플릿에서 가상 머신을 프로비저닝하거나 베어 메탈 공급자와 동일한 PXE 기반 부팅 방법을 사용합니다.
-
-자세한 내용은 [[계산 리소스를](https://docs.ABP.com/or/6.0/sources/compute_resources.html)](https://docs.ABP.com/or/6.0/sources/compute_resources.html) 참조하세요.
-
-## **네트워크 부팅 프로비저닝 워크플로**
-
-물리적 또는 가상 BIOS 호스트의 경우:
-
-1. 첫 번째 부팅 장치를 네트워크를 사용하여 부팅 구성으로 설정합니다.
-2. 두 번째 부팅 장치를 하드 드라이브에서 부팅으로 설정합니다. ABP는 TFTP 부팅 구성 파일을 관리하므로 재부팅만으로 호스트를 쉽게 프로비저닝할 수 있습니다.
-
-물리적 또는 가상 EFI 호스트의 경우:
-
-1. 첫 번째 부팅 장치를 네트워크를 사용하여 부팅 구성으로 설정합니다.
-2. EFI 펌웨어 유형 및 구성에 따라 OS 설치 프로그램은 일반적으로 OS 부팅 로더를 첫 번째 항목으로 구성합니다.
-3. 설치 프로그램으로 다시 재부팅하려면 유틸리티를 사용하여 네트워크에서 부팅하도록 다시 전환하십시오.`efibootmgr`
-
-프로비저닝 프로세스는 기본 PXE 워크플로를 따릅니다.
-
-1. 호스트를 생성하고 도메인과 서브넷을 선택합니다. ABP는 서브넷과 연결된 DHCP ABP 프록시 또는 ABP의 PostgreSQL 데이터베이스에서 사용 가능한 IP 주소를 요청합니다. ABP는 이 IP 주소를 호스트 생성 창의 **IP 주소** 필드에 로드합니다. 새 호스트에 대한 모든 옵션을 완료했으면 새 호스트 요청을 제출합니다.
-2. 호스트와 해당 도메인 및 서브넷의 구성 사양에 따라 ABP는 다음 설정을 만듭니다.
-    ◦ 서브넷과 연결된 ABP 프록시의 DHCP 레코드입니다.
-    ◦ 도메인과 연결된 ABP 프록시의 정방향 DNS 레코드입니다.
-    ◦ 서브넷과 연결된 DNS ABP 프록시의 역방향 DNS 레코드입니다.
-    ◦ 서브넷과 연결된 TFTP ABP 프록시의 호스트에 대한 PXELinux, Grub, Grub2 및 iPXE 구성 파일입니다.
-    ◦ 연결된 Puppet 서버의 Puppet 인증서입니다.
-    ◦ 연결된 ID 서버의 영역입니다.
-3. 호스트는 네트워크에서 첫 번째 디바이스로 부팅하고 HDD를 두 번째 디바이스로 부팅하도록 구성됩니다.
-4. 새 호스트는 DHCP 서버에서 DHCP 예약을 요청합니다.
-5. DHCP 서버는 예약 요청에 응답하고 TFTP 및 옵션을 반환합니다.`next-serverfilename`
-6. 호스트는 PXELoader 설정에 따라 TFTP 서버에서 부트 로더 및 메뉴를 요청합니다.
-7. 부트 로더는 TFTP를 통해 반환됩니다.
-8. 부트 로더는 프로비저닝 인터페이스 MAC 주소를 통해 호스트에 대한 구성을 가져옵니다.
-9. 부트 로더는 운영 체제 설치 프로그램 커널, init RAM 디스크 및 부팅 매개 변수를 가져옵니다.
-10. 설치 관리자는 ABP에서 프로비저닝 템플릿을 요청합니다.
-11. ABP는 프로비저닝 템플릿을 렌더링하고 결과를 호스트에 반환합니다.
-12. 설치 관리자가 운영 체제 설치를 수행합니다.
-    ◦ 설치 프로그램은 ABP 클라이언트를 사용하여 호스트를 ABP에 등록합니다.
-    ◦ 설치 관리자는 및 와 같은 관리 도구를 설치합니다.`katello-agentpuppet`
-    ◦ 설치 관리자는 스크립트에서 ABP에 성공적인 빌드를 알립니다.`postinstall`
-13. PXE 구성 파일은 로컬 부팅 템플릿으로 되돌아갑니다.
-14. 호스트가 재부팅됩니다.
-15. 새 호스트는 DHCP 서버에서 DHCP 예약을 요청합니다.
-16. DHCP 서버는 예약 요청에 응답하고 TFTP 및 옵션을 반환합니다.`next-serverfilename`
-17. 호스트는 PXELoader 설정에 따라 TFTP 서버에서 부트로더 및 메뉴를 요청합니다.
-18. 부트 로더는 TFTP를 통해 반환됩니다.
-19. 부트 로더는 프로비저닝 인터페이스 MAC 주소를 통해 호스트에 대한 구성을 가져옵니다.
-20. 부트 로더는 로컬 드라이브에서 부팅을 시작합니다.
-21. Puppet 클래스를 사용하도록 호스트를 구성한 경우 호스트는 모듈을 사용하여 자체적으로 구성됩니다.
-
-완전히 프로비저닝된 호스트는 다음 워크플로를 수행합니다.
-
-1. 호스트는 네트워크에서 첫 번째 디바이스로 부팅하고 HDD를 두 번째 디바이스로 부팅하도록 구성됩니다.
-2. 새 호스트는 DHCP 서버에서 DHCP 예약을 요청합니다.
-3. DHCP 서버는 예약 요청에 응답하고 TFTP 및 옵션을 반환합니다.`next-serverfilename`
-4. 호스트는 PXELoader 설정에 따라 TFTP 서버에서 부트 로더 및 메뉴를 요청합니다.
-5. 부트 로더는 TFTP를 통해 반환됩니다.
-6. 부트 로더는 프로비저닝 인터페이스 MAC 주소를 통해 호스트에 대한 구성 설정을 가져옵니다.
-7. BIOS 호스트의 경우:
-    ◦ 부트 로더는 부팅할 수 없는 장치를 반환하므로 BIOS는 다음 장치로 건너뜁니다(HDD에서 부팅).
-8. EFI 호스트의 경우:
-    ◦ 부트로더는 ESP 파티션에서 Grub2를 찾아 체인부팅합니다.
-9. ABP에서 호스트를 알 수 없는 경우 기본 부트로더 구성이 제공됩니다. 검색 서비스가 활성화되면 검색으로 부팅되고, 그렇지 않으면 HDD에서 부팅됩니다.
-
-이 워크플로는 사용자 지정 옵션에 따라 다릅니다. 예를 들어:
-
-***발견***감지 서비스를 사용하는 경우, ABP는 자동으로 새 호스트의 MAC 주소를 발견하고 요청을 제출한 후 호스트를 다시 시작합니다. ABP가 호스트를 다시 시작하려면 호스트가 연결된 ABP 프록시에서 TCP 포트 8443에 연결할 수 있어야 합니다.***PXE 없는 프로비저닝***새 호스트 요청을 제출한 후에는 ABP에서 다운로드한 부팅 디스크로 특정 호스트를 부팅하고 호스트의 USB 포트를 사용하여 전송해야 합니다.***계산 리소스Compute resources***ABP는 가상 머신을 생성하고 MAC 주소를 검색하여 ABP에 저장합니다. 이미지 기반 프로비저닝을 사용하는 경우 호스트는 표준 PXE 부팅 및 운영 체제 설치를 따르지 않습니다. 계산 리소스는 호스트에서 사용할 이미지의 복사본을 만듭니다. ABP의 이미지 설정에 따라 초기 구성을 위해 시드 데이터를 전달할 수 있습니다(예: . ABP는 SSH를 사용하여 호스트에 연결하고 템플릿을 실행하여 사용자 지정을 완료할 수 있습니다.`cloud-init`기본적으로 ABP에서 프로비저닝된 프로필 호스트를 삭제해도 외부 계산 리소스의 실제 VM은 삭제되지 않습니다. ABP에서 호스트 항목을 삭제할 때 VM을 삭제하려면 **프로비저닝 > > 설정 관리**로 **이동하고** **destroy_vm_on_host_delete** 설정을 사용하여 이 동작을 구성합니다. 연결된 VM을 삭제하지 않고 나중에 동일한 리소스 이름으로 새 VM을 만들려고 하면 해당 VM 이름이 외부 계산 리소스에 이미 있기 때문에 실패합니다. 이미 프로비저닝된 호스트에 사용하는 표준 호스트 등록 워크플로를 사용하여 기존 VM을 ABP에 계속 등록할 수 있습니다.
-
-|  | 이 페이지의 텍스트와 삽화는 [https://creativecommons.org/licenses/by-sa/3.0/("CC-BY-SA")](https://creativecommons.org/licenses/by-sa/3.0/(%22CC-BY-SA%22)) 라이선스에 따라 [https://atix.de/의](https://atix.de/%EC%9D%98) 라이선스를 받았습니다. 이 페이지에는 동일한 [https://github.com/theforeman/foreman-documentation/blob/master/guides/LICENSE를](https://github.com/theforeman/foreman-documentation/blob/master/guides/LICENSE%EB%A5%BC) 사용하는 https://github.com/theforeman/foreman-documentation 텍스트도 포함되어 있습니다. |
-| --- | --- |
+The theme is available as open source under the terms of the MIT License
