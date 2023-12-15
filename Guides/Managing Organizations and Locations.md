@@ -1,3 +1,7 @@
+---
+sort: 2
+---
+
 # Managing Organizations and Locations
 
 ## **ABP의 Organization 및 Location Context 소개**

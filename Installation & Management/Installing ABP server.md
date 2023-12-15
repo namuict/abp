@@ -1,4 +1,8 @@
-# **ABP 서버 설치**
+---
+sort: 1
+---
+
+# ABP 서버 설치
 
 이 가이드에서는 환경에서 ABP Server를 설치하는 방법을 설명합니다. Alma Linux 8, Oracle Linux 8, Red Hat Enterprise Linux 8 및 Rocky Linux 8에 ABP 서버를 설치할 수 있습니다.
 

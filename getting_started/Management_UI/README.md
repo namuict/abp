@@ -1,3 +1,7 @@
+---
+sort: 2
+---
+
 # ABP 관리 UI
 
 이 장에서는 관리 *사용자 인터페이스를* 나타내는 ABP UI를 다룹니다.
@@ -44,3 +48,4 @@ ABP의 거의 모든 단체는 적어도 하나의 organization및 location과 �
 
 구조화된 location과 관련된 컨텍스트는 ABP 관리 UI에서 다름과 같이 표시됩니다. `organization@parent_location/sub_location`
 
+{% include list.liquid all=true %}

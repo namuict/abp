@@ -1,3 +1,7 @@
+---
+sort: 1
+---
+
 # ABP 란
 **ABP** 는 namuict 에서 개발한 Baremetal 설정 부터 Platform 설치 까지 원격에서 배포하는 Provisioning 솔루션 입니다. 사용하기 쉬운 단일 인터페이스를 통해 시스템 구축을 제공합니다. 특히 ABP는 자동화된 호스트 배포 및 구성 관리를 지원합니다.
 

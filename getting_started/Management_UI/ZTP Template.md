@@ -1,4 +1,8 @@
-## ZTP Template ##
+---
+sort: 2
+---
+
+# ZTP Template
 
 Machine Group에서 선택한 형상에 따라 각각 다른 디자인 형상이 적용 됩니다. 
 

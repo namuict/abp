@@ -1,4 +1,8 @@
-## Machines
+---
+sort: 1
+---
+
+# Machines
 
 Machines 화면은 ABP에 login 하엽 접속을 하면 가장먼저 만나보게 되는 화면입니다.
 
