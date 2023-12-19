@@ -11,6 +11,7 @@ ABP는 ZTP Template을 통해 수집된 각각의 Machine DATA와 Machine Group�
 ![image](https://github.com/namuict/abp/assets/152131676/32e44fa9-bf19-4593-a74a-6a3d2c744cb2)
 
 - *Create*(1)을 통해 실행 이 되어질 Job을 생성 할수 있습니다.
+
 | 새로운 job을 실행 할때는 반드시 사전에 ZTP template 가 작성이 되어있어야 합니다. 동일한 ZTP template를 job으로 실행 시에는 기존에 등록 되어있던 HOST를 반드시 삭제 해야 합니다. ABP는 유일한 HOST 만들 이닉하므로 중복 된 HOST를 등록시에는 작업이 진행 되지 않습니다.|
 | --- |
 
