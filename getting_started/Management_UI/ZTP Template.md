@@ -9,7 +9,7 @@ Machine Group에서 선택한 형상에 따라 각각 다른 디자인 형상이
 적용된 컬럼에 대해서는 ABP 관리 UI 내 에서 직접 작성 및 저장이 가능하지만, Design Detail우측에 있는 Export 버튼을 통해 Excel 형태로 다운 받아 
 관리자 PC에서 에서 수정 및 편집후 Import 하여 저장 할 수 도 있습니다.
 
-**Openshift용**</br>
+**Openshift용**
 
 ***Design Detail 컬럼 목록***
 
