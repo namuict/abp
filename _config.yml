@@ -35,8 +35,8 @@ site_author: Hyunwoo Seo
 repo_url: 'https://github.com/namuict/abp'
 edit_on_github: true
 github_docs_folder: true
-logo: 'https://github.com/namuict/abp/images/logo.png'
-site_favicon: 'https://github.com/namuict/abp/images/abp.ico'
+logo: 'https://namuict.github.io/abp/images/logo.png'
+site_favicon: 'https://namuict.github.io/abp/images/abp.ico'
 sticky_navigation: true
 prev_next_buttons_location: None
 prev_next_buttons_location: top
