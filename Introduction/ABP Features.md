@@ -1,5 +1,10 @@
 ---
+layout : default
+title  : Topline Features
+weight : 3
+<!--
 sort: 3
+-->
 ---
 
 # 주요 기능
