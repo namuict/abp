@@ -31,6 +31,8 @@ ABP Edge는 ABP의 Desktop 제품으로 ABP와 통신이 불가능 할 경우(�
 - ZTP 기능으로 Windriver Container Platform DCManager Central Cloud 기반 Node 설치
 - OpenShift Container Platform All-in-one 설치
 - OpenShift Container Platform 7 Cluster node 설치
+- OpenShift Container Platform Cluster 시간 동기화 기능 추가
+- Cridencial Access Token 기능 추가
 - Libvirt 생성, OS 설치 및 Configuration 구성 Work-flow 기능 추가
 
 ## ABP V1.0 Release Notes
