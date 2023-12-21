@@ -17,7 +17,7 @@ ABP Edge는 ABP의 Desktop 제품으로 ABP와 통신이 불가능 할 경우(�
 
 ## ABP V2.0 Release Notes
 
-**DEC-25th-2022**
+**DEC-25th-2023**
 
 **ABP Features**
 
