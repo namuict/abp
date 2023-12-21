@@ -1,10 +1,5 @@
 ---
-layout : default
-title  : Architecture Overview
-weight : 2
-<!--
-sort: 2
--->
+title: "Architecture Overview"
 ---
 
 # 아키텍처

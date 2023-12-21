@@ -1,10 +1,5 @@
 ---
-layout : default
-title  : What's ABP
-weight : 1
-<!--
-sort: 1
--->
+title: "What's ABP"
 ---
 
 # 1. ABP 란
