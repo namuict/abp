@@ -1,5 +1,5 @@
 ---
-sort: 3
+title: "ZTP Dashboard"
 ---
 
 # ZTP Dashboard

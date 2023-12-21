@@ -1,5 +1,5 @@
 ---
-sort: 3
+title: "Using Hammer CLI"
 ---
 
 # Using Hammer CLI

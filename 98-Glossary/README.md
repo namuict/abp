@@ -1,5 +1,5 @@
 ---
-sort: 98
+title: "Glossary"
 ---
 
 # 용어 설명

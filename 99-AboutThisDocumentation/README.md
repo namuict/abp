@@ -1,5 +1,5 @@
 ---
-sort: 99
+title: "About this doc"
 ---
 
 # About this documentation

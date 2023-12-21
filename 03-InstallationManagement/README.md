@@ -1,5 +1,5 @@
 ---
-sort: 3
+title: "Installation and Management"
 ---
 
 # ABP 설치 및 관리

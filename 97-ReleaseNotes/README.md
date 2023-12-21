@@ -1,5 +1,5 @@
 ---
-sort: 97
+title: "Release Notes"
 ---
 
 # ABP Release notes

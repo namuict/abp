@@ -1,5 +1,5 @@
 ---
-sort: 2
+title: "Management UI"
 ---
 
 # ABP 관리 UI

@@ -1,5 +1,5 @@
 ---
-sort: 1
+title: "First step"
 ---
 
 ## 초기 설정

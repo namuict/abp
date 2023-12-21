@@ -1,5 +1,5 @@
 ---
-sort: 2
+title: "Inatalling ABP Proxy"
 ---
 
 # Inatalling ABP Proxy

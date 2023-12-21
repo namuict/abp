@@ -1,5 +1,5 @@
 ---
-sort: 1
+title: "Inatalling ABP Server"
 ---
 
 # ABP 서버 설치

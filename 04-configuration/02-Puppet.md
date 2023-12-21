@@ -1,5 +1,5 @@
 ---
-sort: 2
+title: "Puppet"
 ---
 
 # Puppet
