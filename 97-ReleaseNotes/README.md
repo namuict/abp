@@ -15,7 +15,7 @@ HP 및 레노버 서버 등에도 설치 가능 하도록 고도화 진행 중�
 
 ABP Edge는 ABP의 Desktop 제품으로 ABP와 통신이 불가능 할 경우(별도의 원격 사이트에 ABP와 통신이 연결 안된 경우 등)에 사용가능하며, 복잡한 Container Platform 설치 이외의 작업(서버 Bios 설정, Healthcheck, OS설치 등)이 가능합니다.
 
-## ABP V2.0 Release Notes
+## ABP v2.0 Release Notes
 
 **DEC-25th-2023**
 
@@ -35,7 +35,7 @@ ABP Edge는 ABP의 Desktop 제품으로 ABP와 통신이 불가능 할 경우(�
 - Cridencial Access Token 기능 추가
 - Libvirt 생성, OS 설치 및 Configuration 구성 Work-flow 기능 추가
 
-## ABP V1.0 Release Notes
+## ABP v1.0 Release Notes
 
 **OCT-1st-2022**
 
