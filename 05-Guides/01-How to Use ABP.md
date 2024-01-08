@@ -98,7 +98,7 @@ Provisioning Workflow는 ABP 서버가 호스트에 운영 체제를 설치하�
 
 ABP에는 기본적으로 사용이 가능한 템플릿 예제가 포함되어 있습니다. ABP 관리 UI에서 **Workflow** > **Provisioning Workflow**로 이동하여 확인합니다. 템플릿을 생성하거나 템플릿을 복제하고 복제본을 편집할 수 있습니다. 템플릿에 대한 도움말을 보려면 **Workflow** > **Provisioning Workflow** > **Create** > **Help**로 이동하십시오.
 
-템플릿은 ERB(Embedded Ruby) 구문을 허용합니다. 자세한 내용은 *호스트 관리*의 [템플릿 작성 참조](https://docs.ABP.com/or/6.0/sources/guides/rocky_linux/managing_hosts/template_writing_reference.html#Template_Writing_Reference_managing-hosts)를 참조하십시오.
+템플릿은 ERB(Embedded Ruby) 구문을 허용합니다. 자세한 내용은 *호스트 관리*의 [템플릿 작성]을 참조하십시오.
 
 Provisioning Workflow에 적용된 변경 내역을 보려면 **Workflow** > Provisioning Workflow로 이동하여 **Provisioning Workflow** 중 하나를 선택하고 **history** 클릭합니다. **Revert(되돌리**기)를 클릭하여 콘텐츠를 이전 버전으로 재정의합니다. 이전 변경 사항으로 되돌릴 수도 있습니다. **Show Diff**를 클릭하여 특정 변경 사항에 대한 정보를 확인합니다.
 
@@ -208,17 +208,15 @@ Machine Group이 일반적인 Machine 설정에 대한 템플릿 역할을 한�
     여기까지는 모든 Machine들이 공통으로 한 Group에 대한 정보를 설정 하는 부분입니다.
 
 8. Design Detail 의 항목을 작성 합니다.
-
-    |  | Design Detail은 위의 4번에서 선택한 Machine Group에 따라 형상이 다른게 표현 됩니다. 일반적으로 엑셀 형태의 key–value 형태를 하고 있습니다.
-         세부 적인 각 항목의 설명은 [ZTP Template] (Http://)을 참고 하시길 바랍니다.|
-    | --- | --- |
+| Design Detail은 위의 4번에서 선택한 Machine Group에 따라 형상이 다른게 표현 됩니다. 일반적으로 엑셀 형태의 key–value 형태를 하고 있습니다. 세부 적인 각 항목의 설명은 [ZTP Template]을 참고 하시길 바랍니다.|
+| --- |
 
 7. **Submit**을 클릭하여 ZTP Templates을 저장합니다.
 
 
 ## **ZTP Dashboard**
 ZTP Dashboard에서는 ZTP Templates에서 작성된 Design을 바탕으로 배포를 실행 하거나, 진행 사항을 확인 할 수 있습니다.
-ABP 관리 UI에서 > **ZTP**> **ZTP  Dashboard**로 이동하면 앞서 배포가 진행된 이력을 확인 할 수 있으며, 현재의 진행 상태를 간략하게 확인 할 수있습니다.
+ABP 관리 UI에서 > **ZTP**> **ZTP Dashboard**로 이동하면 앞서 배포가 진행된 이력을 확인 할 수 있으며, 현재의 진행 상태를 간략하게 확인 할 수있습니다.
 
 신규 배포를 진행할 경우 아래의 절차를 참고 바랍니다.
 
@@ -228,9 +226,10 @@ ABP 관리 UI에서 > **ZTP**> **ZTP  Dashboard**로 이동하면 앞서 배포�
 2. Design 에서 원하는 항목을 선택 합니다. 항목에 표시되는 내용은 ZTP Template에서 생성한 Template List입니다.
    새로운 형태의 Template가 필요한 경우 ZTP Template를 먼저 작성후 이곳에서 선택을 해 주어야 합니다.
 3. Design Details 를 통해 검토합니다. 
-   | 참고: 수정이 필요한 경우 Edit 버튼 클릭합니다. Edit 버튼을 클릭하면, ZTP Template의 해당 디자인으로 이동하게 됩니다.수정 및 Submit 이후에 본 과정을 처음부터 다시 시작 합니다.|
-4. 하단의 Design Network Topology 를 통해 원하는 형상의 구조가 올바른지 검토 합니다.
-5. Review 탭으로 이동후 ZTP Recurring Group Name 작성합니다.
-   |Recurring Group Name은 현재 실행하고자 하는 그룹의 이름이며, 해당 이름은 ZTP 실행과 동시에, ZTP Dashboard 에서 확인이 가능하다. |
-
-6. **Submit**을 클릭하여 ZTP를 실행합니다.
+| 참고: 수정이 필요한 경우 Edit 버튼 클릭합니다. Edit 버튼을 클릭하면, ZTP Template의 해당 디자인으로 이동하게 됩니다.수정 및 Submit 이후에 본 과정을 처음부터 다시 시작 합니다. |
+| --- |
+5. 하단의 Design Network Topology 를 통해 원하는 형상의 구조가 올바른지 검토 합니다.
+6. Review 탭으로 이동후 ZTP Recurring Group Name 작성합니다.
+|Recurring Group Name은 현재 실행하고자 하는 그룹의 이름이며, 해당 이름은 ZTP 실행과 동시에, ZTP Dashboard 에서 확인이 가능하다. |
+| --- |
+7. **Submit**을 클릭하여 ZTP를 실행합니다.
