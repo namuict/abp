@@ -45,10 +45,6 @@ ABP는 이러한 오픈 소스 프로젝트를 활용하여 NamuICT 연구소에
 
 **사용된 오픈 소스 소프트웨어의 목록**
 
-***Foreman***Foreman은 물리적 서버와 가상 서버를 관리하는 도구입니다.
+***Foreman*** Foreman은 물리적 서버와 가상 서버를 관리하는 도구입니다.
 
-***Pulp***ABP는 Pulp를 사용하여 소프트웨어 패키지를 가져오고 구성하고 배포합니다. 
-
-***Ansible Plugin***ABP는 관리 호스트 구성을 단순화하기 위해 [Ansible] 플러그인을 제공합니다.
-
-***Puppet Plugin***ABP는 관리 호스트 구성을 단순화하기 위해 [Puppet]플러그인을 제공합니다.
+***Ansible Plugin*** ABP는 관리 호스트 구성을 단순화하기 위해 Ansible 플러그인을 제공합니다.
