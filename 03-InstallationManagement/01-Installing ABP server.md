@@ -199,15 +199,15 @@ ABP server 설치를 수행하는 경우 다음이 필요합니다.
 
 ### 서버에 접속하여 해당 경로로 이동 후 github에 있는 repository를 clone 합니다.
 
-```
-ssh root@{SERVER_IP}
-```
-```
-cd /opt/namuict/abp/bootstrap
-```
-```
-git clone git@github.com:namuict/abp-cli-mirror.git
-```
+
+```ssh root@{SERVER_IP}```
+
+
+```cd /opt/namuict/abp/bootstrap```
+
+
+```git clone git@github.com:namuict/abp-cli-mirror.git```
+
 
 해당 경로로 이동, 환경변수를 설정합니다.
 
@@ -332,26 +332,21 @@ abp_host_ip=${abp_host_ip:-10.1.13.40}
 
 ### 환경변수 설정 후에 docker-compose 파일들을 nexus 또는 dockerhub에서 pull 합니다.
 
-```
-docker-compose -f docker-compose.yml pull
-```
-```
-docker-compose -f docker-compose-temporal-2.yml pull
-```
-```
-docker-compose -f docker-compose-abp-5.yml pull
-```
+
+```docker-compose -f docker-compose.yml pull```
+
+```docker-compose -f docker-compose-temporal-2.yml pull```
+
+```docker-compose -f docker-compose-abp-5.yml pull```
+
 
 
 ### pull이 끝난 후 compose 파일들을 이용해 컨테이너들을 순서대로 올립니다.
 
-```
-docker-compose -f docker-compose.yml up -d
-```
-```
-docker-compose -f docker-compose-temporal-2.yml up -d
-```
-```
-docker-compose -f docker-compose-abp-5.yml up -d
-```
+
+```docker-compose -f docker-compose.yml up -d```
+
+```docker-compose -f docker-compose-temporal-2.yml up -d```
+
+```docker-compose -f docker-compose-abp-5.yml up -d```
 
