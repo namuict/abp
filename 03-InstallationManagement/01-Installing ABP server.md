@@ -196,3 +196,162 @@ ABP server 설치를 수행하는 경우 다음이 필요합니다.
 - 킥스타트 파일
     
 ## **기기 설치 단계**
+
+### 서버에 접속하여 해당 경로로 이동 후 github에 있는 repository를 clone 합니다.
+
+```
+ssh root@{SERVER_IP}
+```
+```
+cd /opt/namuict/abp/bootstrap
+```
+```
+git clone git@github.com:namuict/abp-cli-mirror.git
+```
+
+해당 경로로 이동, 환경변수를 설정합니다.
+
+```cd abp-deployment```
+
+```vi .env```
+
+```
+######################
+### BACKEND CONFIG ###
+######################
+ABP_DB_NAME=
+ABP_DB_USER=
+ABP_MASTER_PW=					
+ABP_EXTERNAL_IP_ADDR=
+ABP_DOMAIN=
+ABP_COUNTRY_NAME=
+ABP_ORGANIZATION_NAME=
+ABP_FQDN_NAME=
+PROXY_FQDN=
+
+
+#####################
+### DOCKER CONFIG ###
+#####################
+DOCKER_REGISTRY_URL=docker-10-1-13-150.traefik.me/      
+# ex. DOCKER_REGISTRY_URL=10.1.13.150/			
+TAG=:develop   						
+
+
+####################
+### ABPQL CONFIG ###
+####################
+SERVICE_NAME=
+HOST_NAME=
+FOREMAN_API_URL=
+NODE_ENV=
+PORT=
+PROXY_PREFIX=/abpql/
+TRANSPORT_PORT=5454
+JWT_SECRET_KEY=
+JWT_EXPIRATION_TIME=3600
+FALLBACK_LANGUAGE=
+NATS_ENABLED=
+ENABLE_ORM_LOGS=
+ENABLE_DOCUMENTATION=
+
+
+# ABP DB CONFIG FOR ABPQL 
+POSTGRAPHILE_DB_DATABASE=foreman
+CANDLEPIN_DB_DATABASE=candlepin
+PULPCORE_DB_DATABASE=pulpcore
+ABP_DB_HOST=
+ABP_DB_PORT=5432
+ABP_DB_USERNAME=abp
+ABP_DB_PASSWORD=
+ABP_DB_DATABASE=abp
+ABP_LOG_DB_DATABASE=abp-log
+ABP_POSTGRAPHILE_DB_DATABASE=abp
+
+# TEMPORALIO FOR ABPQL #
+TEMPORALIO_URI=temporal:7233
+
+
+#################
+### ABPUI ENV ###
+#################
+# ABP_QL_HOST=DOMAIN_NAME_OF_ABP_QL
+BACKEND_HOST_IP=
+REACT_APP_BACKEND_PROXY_PATH=https://${BACKEND_HOST_IP}
+REACT_APP_BACKEND_BASE=https://${BACKEND_HOST_IP}:50443
+REACT_APP_BACKEND_API_VER=/api
+REACT_APP_ABP_BASE_PATH=https://${BACKEND_HOST_IP}:50443
+REACT_APP_ABP_PROXY_PATH=/abpql
+
+
+##################
+###    ZTP     ###
+##################
+FOREMAN_URL=https://${BACKEND_HOST_IP}
+ABPQL_URL=https://${BACKEND_HOST_IP}:50090
+
+
+##################
+### PROMETHEUS ###
+##################
+RETENTION_TIME=15d
+
+
+################
+### TEMPORAL ###
+################
+TEMPORAL_VERSION=1.21.4
+TEMPORAL_UI_VERSION=2.17.2
+
+
+######################
+### BACKEND CONFIG ###
+######################
+organization=${organization:-NamuICT}
+location=${location:-Research}
+admin_username=${admin_username:-admin}
+admin_password=${admin_password:-root123}
+domainname=${domainname:-example.com}
+certs_country=${certs_country:-KR}
+certs_state=${certs_state:-gyeonggido}
+certs_city=${certs_city:-suwon}
+dhcp_network=${dhcp_network:-10.1.13.0}
+dhcp_netmask=${dhcp_netmask:-255.255.255.0}
+MY_TIMEZONE=${MY_TIMEZONE:-Asia/Seoul}
+ex_port_http=${ex_port_http:-51080}
+ex_port_https=${ex_port_https:-51443}
+ex_port_rsyslog=${ex_port_rsyslog:-51514}
+ex_port_template=${ex_port_template:-59000}
+ex_port_template_https=${ex_port_template_https:-60090}
+abp_net_ipv4=${abp_net_ipv4:-172.20.0.11}
+abp_repo_ipv4=${abp_repo_ipv4:-172.20.0.12}
+abp_net_subnet=${abp_net_subnet:-172.20.0.0/24}
+abp_net_gateway=${abp_net_gateway:-172.20.0.1}
+abp_host_ip=${abp_host_ip:-10.1.13.40}
+```
+
+### 환경변수 설정 후에 docker-compose 파일들을 nexus 또는 dockerhub에서 pull 합니다.
+
+```
+docker-compose -f docker-compose.yml pull
+```
+```
+docker-compose -f docker-compose-temporal-2.yml pull
+```
+```
+docker-compose -f docker-compose-abp-5.yml pull
+```
+
+
+### pull이 끝난 후 compose 파일들을 이용해 컨테이너들을 순서대로 올립니다.
+
+```
+docker-compose -f docker-compose.yml up -d
+```
+```
+docker-compose -f docker-compose-temporal-2.yml up -d
+```
+```
+docker-compose -f docker-compose-abp-5.yml up -d
+```
+
