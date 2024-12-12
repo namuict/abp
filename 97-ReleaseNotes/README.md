@@ -14,6 +14,22 @@ HP 및 레노버 서버 등에도 설치 가능 하도록 고도화 진행 중�
 또하나의 제품군으로는 ABP Edge가 있습니다.
 
 ABP Edge는 ABP의 Desktop 제품으로 ABP와 통신이 불가능 할 경우(별도의 원격 사이트에 ABP와 통신이 연결 안된 경우 등)에 사용가능하며, 복잡한 Container Platform 설치 이외의 작업(서버 Bios 설정, Healthcheck, OS설치 등)이 가능합니다.
+## ABP v3.0 Release Notes
+
+**DEC-25th-2024**
+
+**ABP Features**
+- HPE provider interface 추가
+- HPE와 Dell Interface 통합 배포
+
+**New in this release**
+- Docker Container 운영환경 내 RHOCP 배포 형상 추가
+- Docker Container 운영환경 내 Linux OS 배포 형상(RHEL, Rocky, CentOS) 추가
+- Report Generate 기능 추가
+- Report Export 기능 추가(HTML, JSON 등)
+- Redfish 기능 JobTemplate 추가
+- Reboot 중 Monitoring 기능 추가
+- ZTP Dashboard Recurring Group Log Viewer 추가
 
 ## ABP v2.0 Release Notes
 
